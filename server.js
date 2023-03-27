@@ -4,12 +4,26 @@ const express = require('express');
 const consoleTable = require('console.table');
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
+const env = require('dotenv');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 //require  ----------
 
+// Connect to database  ----------
+const db = mysql.createConnection(
+    {
+        host: 'localhost',
+        // MySQL username,
+        user: 'root',
+        // TODO: Add MySQL password here
+        password: process.env.password,
+        database: 'movies_db'
+    },
+    console.log(`Connected to the movies_db database.`)
+);
 
+// Connect to database  ----------
 // Express middleware  ----------
 
 app.use(express.urlencoded({ extended: false }));
