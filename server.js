@@ -17,3 +17,31 @@ app.use(express.json());
 
 // Express middleware  ----------
 
+// Read list of all reviews and associated movie name using LEFT JOIN
+app.get('/api/movie-reviews', (req, res) => {
+    const sql = `SELECT movies.movie_name AS movie, reviews.review FROM reviews 
+                LEFT JOIN movies ON reviews.movie_id = movies.id ORDER BY movies.movie_name;`;
+    db.query(sql, (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
+    });
+});
+
+
+
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+    res.status(404).end();
+});
+
+
+// START
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
