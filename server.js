@@ -31,22 +31,22 @@ app.use(express.json());
 
 // Express middleware  ----------
 
-// Read list of all reviews and associated movie name using LEFT JOIN
-app.get('/api/movie-reviews', (req, res) => {
-    const sql = `SELECT movies.movie_name AS movie, reviews.review FROM reviews 
-                LEFT JOIN movies ON reviews.movie_id = movies.id ORDER BY movies.movie_name;`;
-    db.query(sql, (err, rows) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-        res.json({
-            message: 'success',
-            data: rows
-        });
-    });
+// the first route
+app.get('/', async (req, res) => {
+    try {
+        res.status(200).json(readerData);
+    } catch (err) {
+        res.status(400).json(err);
+    }
 });
 
+
+app.get('', async (req, res) => {
+    try {
+        res.status(200).json(readData)
+    }
+
+})
 
 
 // Default response for any other request (Not Found)
