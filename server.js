@@ -40,16 +40,47 @@ app.get('/', async (req, res) => {
     }
 });
 
-
+// ----------
+// view all departments
 app.get('', async (req, res) => {
-    try {
-        res.status(200).json(readData)
-    }
+
+})
+
+// add deparment
+app.post('', async (req, res) => {
+
+})
+
+// ----------
+// view all roles
+app.get('', async (req, res) => {
+
+})
+
+// add roles
+app.post('', async (req, res) => {
+
+})
+
+// ----------
+// view all employees
+app.get('', async (req, res) => {
+
+})
+
+// add employees
+app.post('', async (req, res) => {
+
+})
+
+// update employees
+app.post('', async (req, res) => {
 
 })
 
 
-// Default response for any other request (Not Found)
+
+// Default response for any other request (Not Found) ----------
 app.use((req, res) => {
     res.status(404).end();
 });
