@@ -1,12 +1,9 @@
 
 //require  ----------
-// const express = require('express');
+const cTable = require('console.table');
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const env = require('dotenv');
-
-// const PORT = process.env.PORT || 3001;
-// const app = express();
 //require  ----------
 
 // Connect to database  ----------
@@ -37,6 +34,13 @@ const firstLine = [
     },
 ]
 
+// // the first path
+
+db.query(sql,params, (err, result) => {
+
+
+})
+
 function switchPath(answer) {
     switch (answer) {
         case 'view all departments':
@@ -65,7 +69,8 @@ function switchPath(answer) {
 // // ----------
 // // view all departments
 function viewDepartments() {
-    console.table()
+    cTable()
+
 }
 
 
@@ -86,15 +91,9 @@ function viewDepartments() {
 
 // // update employees
 
+function start(){
+    inquirer
+        .prompt(firstLine)
+}
 
-
-// // Default response for any other request (Not Found) ----------
-// app.use((req, res) => {
-//     res.status(404).end();
-// });
-
-
-// // START
-// app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-// });
+start()
