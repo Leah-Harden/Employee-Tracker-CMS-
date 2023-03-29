@@ -24,59 +24,67 @@ const db = mysql.createConnection(
 
 
 // // Connect to database  ----------
-// // Express middleware  ----------
 
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.json());
 
-// // Express middleware  ----------
+// // the first path
+const firstLine = [
+    {
+        type: 'input',
+        name: 'first',
+        message: ` Would you like to view all departments, view all roles, view all employees,
+                    add a department, add a role, add an employee, or update an employee role`,
+        validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
+    },
+]
 
-// // the first route
-// app.get('/', async (req, res) => {
-//     try {
-//         res.status(200).json(readerData);
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
-
+function switchPath(answer) {
+    switch (answer) {
+        case 'view all departments':
+            // code block
+            break;
+        case 'view all roles':
+            // code block
+            break;
+        case 'view all employees':
+            // code block
+            break;
+        case 'add a department':
+            // code block
+            break;
+        case 'add a role':
+            // code block
+            break;
+        case 'add an employee':
+            // code block
+            break;
+        case 'update an employee role':
+            // code block
+            break;
+    }
+}
 // // ----------
 // // view all departments
-// app.get('', async (req, res) => {
+function viewDepartments() {
+    console.table()
+}
 
-// })
 
 // // add deparment
-// app.post('', async (req, res) => {
-
-// })
 
 // // ----------
 // // view all roles
-// app.get('', async (req, res) => {
 
-// })
 
 // // add roles
-// app.post('', async (req, res) => {
 
-// })
 
 // // ----------
 // // view all employees
-// app.get('', async (req, res) => {
-
-// })
 
 // // add employees
-// app.post('', async (req, res) => {
 
-// })
 
 // // update employees
-// app.post('', async (req, res) => {
-
-// })
 
 
 
