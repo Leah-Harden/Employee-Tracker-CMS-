@@ -36,23 +36,34 @@ const firstLine = [
 
 // // the first path
 
+const addRole = [
+    {
+        type: 'input',
+        name: 'name',
+        message: `What is the name of your role?`,
+        validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
+    },
+
+]
+
+
 
 function switchPath(answer) {
     switch (answer) {
         case 'view all departments':
-            // code block
+            viewDepartments()
             break;
         case 'view all roles':
-            // code block
+            viewRoles()
             break;
         case 'view all employees':
-            // code block
+            viewEmployees()
             break;
         case 'add a department':
             // code block
             break;
         case 'add a role':
-            // code block
+            addRole()
             break;
         case 'add an employee':
             // code block
@@ -86,10 +97,16 @@ function viewRoles() {
 }
 
 // // add roles
-function viewRoles() {
-    db.query('SELECT * FROM role_employee', (err, result) => {
-    
-    })
+function addRole() {
+    inquirer
+    .prompt(firstLine) .then(res) => {
+
+        db.query(
+            `ALTER TABLE table_name ADD ${res} ;`, (err, result) => {
+            
+            
+        })
+    }
     
 }
 
