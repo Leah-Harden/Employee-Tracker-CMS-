@@ -99,14 +99,14 @@ function viewRoles() {
 // // add roles
 function addRole() {
     inquirer
-    .prompt(firstLine) .then(res) => {
+    .prompt(firstLine) .then(res => {
 
         db.query(
             `ALTER TABLE table_name ADD ${res} ;`, (err, result) => {
             
             
         })
-    }
+    })
     
 }
 
