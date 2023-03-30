@@ -36,10 +36,6 @@ const firstLine = [
 
 // // the first path
 
-db.query(sql,params, (err, result) => {
-
-
-})
 
 function switchPath(answer) {
     switch (answer) {
@@ -69,8 +65,11 @@ function switchPath(answer) {
 // // ----------
 // // view all departments
 function viewDepartments() {
-    cTable()
-
+    db.query('SELECT * FROM department', (err, result) => {
+        console.table(result)
+    
+    })
+    
 }
 
 
@@ -78,13 +77,31 @@ function viewDepartments() {
 
 // // ----------
 // // view all roles
-
+function viewRoles() {
+    db.query('SELECT * FROM role_employee', (err, result) => {
+        console.table(result)
+    
+    })
+    
+}
 
 // // add roles
+function viewRoles() {
+    db.query('SELECT * FROM role_employee', (err, result) => {
+    
+    })
+    
+}
 
-
-// // ----------
+// //----------
 // // view all employees
+function viewEmployees() {
+    db.query('SELECT * FROM role_employee', (err, result) => {
+        console.table(result)
+    
+    })
+    
+}
 
 // // add employees
 
