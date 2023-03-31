@@ -12,7 +12,7 @@ const db = mysql.createConnection(
         host: 'localhost',
         // MySQL username,
         user: 'root',
-        // TODO: Add MySQL password here
+        // TODO: MySQL password 
         password: process.env.password,
         database: 'tracker_db'
     },
@@ -29,14 +29,14 @@ const firstLine = [
         type: 'input',
         name: 'first',
         message: ` Would you like to view all departments, view all roles, view all employees,
-                    add a department, add a role, add an employee, or update an employee role`,
+                    add a department, add a role, add an employee, or update an employee role?`,
         validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
     },
 ]
 
 // // the first path
 
-const addRole = [
+const addRoleText = [
     {
         type: 'input',
         name: 'name',
@@ -48,8 +48,8 @@ const addRole = [
 
 
 
-function switchPath(answer) {
-    switch (answer) {
+function switchPath(res) {
+    switch (res) {
         case 'view all departments':
             viewDepartments()
             break;
@@ -127,7 +127,9 @@ function viewEmployees() {
 
 function start(){
     inquirer
-        .prompt(firstLine)
+        .prompt(firstLine) .then(res) => {
+            switchPath(res)
+        }
 }
 
 start()
