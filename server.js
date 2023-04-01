@@ -26,10 +26,12 @@ const db = mysql.createConnection(
 // // the first path
 const firstLine = [
     {
-        type: 'input',
+        type: 'list',
         name: 'first',
-        message: ` Would you like to view all departments, view all roles, view all employees,
-                    add a department, add a role, add an employee, or update an employee role?`,
+        message: ` Would you like to do?`,
+        
+        choices: ["view all departments", "view all roles", "view all employees",
+                "add a department", "add a role", "add an employee","update an employee role"],
         validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
     },
 ]
