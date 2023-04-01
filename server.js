@@ -13,7 +13,7 @@ const db = mysql.createConnection(
         // MySQL username,
         user: 'root',
         // TODO: MySQL password 
-        password: process.env.password,
+        password: "new",
         database: 'tracker_db'
     },
     console.log(`Connected to the tracker_db database.`)
