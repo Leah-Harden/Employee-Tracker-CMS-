@@ -99,15 +99,13 @@ function viewRoles() {
 // // add roles
 function addRole() {
     inquirer
-    .prompt(firstLine) .then(res => {
-
+    .prompt(addRoleText) 
+    .then(res => {
         db.query(
             `ALTER TABLE table_name ADD ${res} ;`, (err, result) => {
-            
-            
-        })
+                console.log(`Table has been change`)
+            })
     })
-    
 }
 
 // //----------
@@ -123,13 +121,31 @@ function viewEmployees() {
 // // add employees
 
 
-// // update employees
+// // update employee
+const updateEmployee = [
+    {
+        type: 'input',
+        name: 'which',
+        message: `Which table would you like to change?`,
+        validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
+    },
+    {
+        type: 'input',
+        name: 'name',
+        message: `What is the name of your role?`,
+        validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
+    },
+
+]
+
+// ---------------
 
 function start(){
     inquirer
-        .prompt(firstLine) .then(res) => {
+        .prompt(firstLine) 
+        .then((res) => {
             switchPath(res)
-        }
+        })
 }
 
 start()
