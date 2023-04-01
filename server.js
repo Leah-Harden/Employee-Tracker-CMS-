@@ -43,6 +43,12 @@ const addRoleText = [
         message: `What is the name of your role?`,
         validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
     },
+    {
+        type: 'input',
+        name: 'salary',
+        message: `What is the salary of this role?`,
+        validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
+    },
 
 ]
 
@@ -102,8 +108,8 @@ function addRole() {
     .prompt(addRoleText) 
     .then(res => {
         db.query(
-            `ALTER TABLE table_name ADD ${res} ;`, (err, result) => {
-                console.log(`Table has been change`)
+            `ALTER TABLE role_employee ADD ${res.name} ;`, (err, result) => {
+                console.log(`role_employee table has been change`)
             })
     })
 }
