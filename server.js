@@ -29,7 +29,7 @@ const firstLine = [
         type: 'list',
         name: 'first',
         message: ` Would you like to do?`,
-        
+
         choices: ["view all departments", "view all roles", "view all employees",
                 "add a department", "add a role", "add an employee","update an employee role"],
         validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
@@ -57,7 +57,7 @@ const addRoleText = [
 
 
 function switchPath(res) {
-    switch (res) {
+    switch (res.first) {
         case 'view all departments':
             viewDepartments()
             break;
@@ -84,9 +84,10 @@ function switchPath(res) {
 // // ----------
 // // view all departments
 function viewDepartments() {
-    db.query('SELECT * FROM department', (err, result) => {
+    db.query('SELECT * FROM departments', (err, result) => {
+        if (err) throw err;
         console.table(result)
-    
+        start()
     })
     
 }
@@ -98,6 +99,7 @@ function viewDepartments() {
 // // view all roles
 function viewRoles() {
     db.query('SELECT * FROM role_employee', (err, result) => {
+        if (err) throw err;
         console.table(result)
     
     })
@@ -120,6 +122,7 @@ function addRole() {
 // // view all employees
 function viewEmployees() {
     db.query('SELECT * FROM role_employee', (err, result) => {
+        if (err) throw err;
         console.table(result)
     
     })
@@ -152,6 +155,7 @@ function start(){
     inquirer
         .prompt(firstLine) 
         .then((res) => {
+            console.log(res)
             switchPath(res)
         })
 }
