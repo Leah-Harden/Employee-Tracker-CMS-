@@ -86,8 +86,8 @@ function switchPath(res) {
 function viewDepartments() {
     db.query('SELECT * FROM departments', (err, result) => {
         if (err) throw err;
-        console.table(result)
-        start()
+        console.table(result);
+        start();
     })
     
 }
@@ -101,6 +101,7 @@ function viewRoles() {
     db.query('SELECT * FROM role_employee', (err, result) => {
         if (err) throw err;
         console.table(result)
+        start()
     
     })
     
@@ -115,16 +116,17 @@ function addRole() {
             `ALTER TABLE role_employee ADD ${res.name} ;`, (err, result) => {
                 console.log(`role_employee table has been change`)
             })
+            start()
     })
 }
 
 // //----------
 // // view all employees
 function viewEmployees() {
-    db.query('SELECT * FROM role_employee', (err, result) => {
+    db.query('SELECT * FROM employee', (err, result) => {
         if (err) throw err;
         console.table(result)
-    
+        start()
     })
     
 }
