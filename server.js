@@ -112,12 +112,15 @@ function addRole() {
     inquirer
     .prompt(addRoleText) 
     .then(res => {
+        console.log(res)
         db.query(
-            `ALTER TABLE role_employee ADD ${res.name} ;`, (err, result) => {
-                console.log(`role_employee table has been change`)
+            `INSERT INTO role_employee (title, salary,department_id) VALUES (?,?,?)`,[res.name,parseFloat(res.salary), null], (err, result) => {
+                if (err) {console.log(err)} else {
+                    console.log(`role_employee table has been change`)
+                };
             })
             start()
-    })
+        })
 }
 
 // //----------
@@ -132,9 +135,23 @@ function viewEmployees() {
 }
 
 // // add employees
+function addEmployees() {
+    inquirer
+    .prompt(addRoleText) 
+    .then(res => {
+        console.log(res)
+        db.query(
+            `INSERT INTO employee (first_name,last_name,role_id,manager_id) VALUES (?,?,?,?)`,
+            [res.name,parseFloat(res.salary), null], (err, result) => {
+                if (err) {console.log(err)} else {
+                    console.log(`role_employee table has been change`)
+                };
+            })
+            start()
+        })
+}
 
 
-// // update employee
 const updateEmployee = [
     {
         type: 'input',
@@ -150,6 +167,7 @@ const updateEmployee = [
     },
 
 ]
+// // update employee
 
 // ---------------
 
