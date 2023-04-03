@@ -1,12 +1,12 @@
-INSERT INTO departments (id,name)
-VALUES (1, "Human Resources"),
+INSERT INTO departments (name)
+VALUES ("Human Resources"),
     ("IT"),
     ("Accounting"),
     ("Marketing"),
     ("R&D");
 
-INSERT INTO role_employee (id,title, salary)
-VALUES (1,"Manager",7.75),
+INSERT INTO role_employee (title, salary)
+VALUES ("Manager",7.75),
     ( "Marketing Coordinator",9.75),
     ( "Public Relations",20.00),
     ( "Receptionist",15.50),
@@ -15,8 +15,8 @@ VALUES (1,"Manager",7.75),
     ( "Computer Scientist",22.75);
     
 
-INSERT INTO employee (id,first_name,last_name)
-VALUES (1,"Dave","Smith"),
+INSERT INTO employee (first_name,last_name)
+VALUES ("Dave","Smith"),
     ("Cara","Smith"),
     ("Page","Jone"),
     ("Dave","Kite"),
