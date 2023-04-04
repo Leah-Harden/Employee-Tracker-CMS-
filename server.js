@@ -97,14 +97,20 @@ const addEmployeeText = [
 const updateEmployeeText = [
     {
         type: 'input',
-        name: 'which',
-        message: `Which table would you like to change?`,
+        name: 'place',
+        message: `Which field would you like to change?`,
         validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
     },
     {
         type: 'input',
-        name: 'name',
-        message: `What is the name of your role?`,
+        name: 'new',
+        message: `What the new info you want to place?`,
+        validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
+    },
+    {
+        type: 'input',
+        name: 'where',
+        message: `Which row is it?`,
         validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
     },
 
@@ -124,7 +130,7 @@ function switchPath(res) {
             viewEmployees()
             break;
         case 'add a department':
-            // code block
+            addDepartment()
             break;
         case 'add a role':
             addRole()
@@ -133,7 +139,7 @@ function switchPath(res) {
             addEmployees()
             break;
         case 'update an employee role':
-            // code block
+            updateEmployees()
             break;
     }
 }
@@ -224,14 +230,13 @@ function addEmployees() {
 
 
 // // update employee
-function addEmployees() {
+function updateEmployees() {
     inquirer
     .prompt(updateEmployeeText) 
     .then(res => {
         console.log(res)
         db.query(
-            `INSERT INTO employee (first_name,last_name,role_id,manager_id) VALUES (?,?,?,?)`,
-            [res.first,res.last, res.roleID, res.managerID], (err, result) => {
+            `UPDATE employee SET ${res.place} = ${res.new} WHERE id = ${res.where}`, (err, result) => {
                 if (err) {console.log(err)} else {
                     console.log(`employee table has been change`)
                 };
