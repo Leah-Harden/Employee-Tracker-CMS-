@@ -236,7 +236,7 @@ function updateEmployees() {
     .then(res => {
         console.log(res)
         db.query(
-            `UPDATE employee SET ${res.place} = ${res.new} WHERE id = ${res.where}`, (err, result) => {
+            `UPDATE employee SET ${res.place} = '${res.new}' WHERE id = ${res.where}`, (err, result) => {
                 if (err) {console.log(err)} else {
                     console.log(`employee table has been change`)
                 };
