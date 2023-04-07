@@ -15,7 +15,7 @@ CREATE TABLE role_employee (
     salary DECIMAL,
     department_id INT,
     PRIMARY KEY (id),
-    CONSTRAINT fk_deparment_id FOREIGN KEY (department_id)
+    CONSTRAINT fk_department_id FOREIGN KEY (department_id)
     REFERENCES departments (id)
     ON DELETE SET NULL
 );

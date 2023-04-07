@@ -163,7 +163,7 @@ function addDepartment() {
     .then(res => {
         console.log(res)
         db.query(
-            `INSERT INTO departments (name) VALUES (?,?,?)`,[res.name], (err, result) => {
+            `INSERT INTO departments (name) VALUES (?)`,[res.name], (err, result) => {
                 if (err) {console.log(err)} else {
                     console.log(`departments table has been change`)
                 };
