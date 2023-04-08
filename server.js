@@ -63,6 +63,12 @@ const addRoleText = [
         message: `What is the salary of this role?`,
         validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
     },
+    {
+        type: 'input',
+        name: 'department_id',
+        message: `What is the department_id of this role?`,
+        validate: (value) => { if (value) { return true } else { return `Please choose something.` } },
+    },
     
 ]
 
@@ -191,7 +197,7 @@ function addRole() {
     .then(res => {
         console.log(res)
         db.query(
-            `INSERT INTO role_employee (title, salary,department_id) VALUES (?,?,?)`,[res.name,parseFloat(res.salary), null], (err, result) => {
+            `INSERT INTO role_employee (title, salary,department_id) VALUES (?,?,?)`,[res.name,parseFloat(res.salary), res.department_id], (err, result) => {
                 if (err) {console.log(err)} else {
                     console.log(`role_employee table has been change`)
                 };
